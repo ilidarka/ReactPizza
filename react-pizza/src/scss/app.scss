@@ -7,6 +7,17 @@ body {
     background-color: $background;
 }
 
+.block1 {
+    .text2 {
+        li {
+            color: red;
+        }
+        li:last-of-type {
+            color: purple;
+        }
+    }
+}
+
 .wrapper {
     width: calc(100vw - 100px);
     height: 100%;
