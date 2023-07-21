@@ -1,0 +1,36 @@
+.pagination {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    li {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fe5f1e;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 1px solid #fe5f1e;
+            padding: 20px;
+            &:hover {
+                background-color: #fe5f1e;
+                color: #fff;
+            }
+        }
+    }
+    :global {
+        .selected {
+            a {
+                background-color: #fe5f1e;
+                color: #fff;
+            }
+        }
+    }
+}
