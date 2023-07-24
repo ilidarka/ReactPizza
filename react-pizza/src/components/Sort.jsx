@@ -1,6 +1,11 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { setSortType } from '../redux/slices/filterSlice';
 
-function Sort({ value, onChangeSort }) {
+function Sort() {
+    const dispatch = useDispatch();
+    const sort = useSelector((state) => state.filterSlice.sort);
+
     const [isVisible, setIsVisible] = React.useState(false);
     const list = [
         { name: 'популярности', sortProperty: 'rating' },
@@ -8,8 +13,8 @@ function Sort({ value, onChangeSort }) {
         { name: 'алфавиту', sortProperty: 'alphabet' },
     ];
 
-    const onClickListItem = (index) => {
-        onChangeSort(index);
+    const onClickListItem = (obj) => {
+        dispatch(setSortType(obj));
         setIsVisible(false);
     };
 
@@ -29,7 +34,7 @@ function Sort({ value, onChangeSort }) {
                     />
                 </svg>
                 <b>Сортировка по:</b>
-                <span onClick={() => setIsVisible(!isVisible)}>{value.name}</span>
+                <span onClick={() => setIsVisible(!isVisible)}>{sort.name}</span>
             </div>
             {isVisible && (
                 <div className='sort__popup'>
@@ -39,7 +44,7 @@ function Sort({ value, onChangeSort }) {
                                 key={index}
                                 onClick={() => onClickListItem(listItem)}
                                 className={
-                                    value.sortProperty === listItem.sortProperty ? 'active' : ''
+                                    sort.sortProperty === listItem.sortProperty ? 'active' : ''
                                 }
                             >
                                 {listItem.name}
